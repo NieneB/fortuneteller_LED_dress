@@ -28,9 +28,11 @@ void setup() {
 }
 
 void loop() {
+// program4();
+//  reset();
   //to test play all programs
-  //  startProgram(1);
-  // read the pushbutton input pin:
+//   startProgram(1);
+   //read the pushbutton input pin:
   buttonState = digitalRead(buttonPin);
   // IF button is pressed start counting
   if(buttonState == LOW){
@@ -79,14 +81,31 @@ void startProgram(int count){
         break;
     }
   }
-  //Hold 2 counts is red program
+  //Hold 2 counts is program no green and red
   if(count==2){
-     voorspellingCount = 1;
-     program3();} //Rood
-  //Hold 3 counts is rainbow program
+    voorspellingCount = 1;
+    program = random(4);
+    switch(program){
+      case 1:
+        program1();
+        break;
+      case 2:
+        program4();
+        break;
+      case 3:
+        program5();
+        break;
+      case 4:
+        program6();
+        break;
+    }
+    
+  } 
+  //Hold 3 counts is red 
   if(count==3){
     voorspellingCount = 0;
-    program7();} //Regenboog
+    program3(); //red
+    } 
    //Hold 4 counts is rainbow sepcialprogram
   if(count==4){
     voorspellingCount = 0;
@@ -247,38 +266,40 @@ void program3(){ //ROOD
 
 void program4(){ //GEEL
     voorspelling(voorspellingCount);
+     ColorStrip(255,208,0,8);
+    delay(5000);
 
-    //define strips as matrix    
-    int strip1[] = {12,13,14,15,16,17,18,19,20,21,22,23,24};
-    int strip2[] = {37,36,35,34,33,32,31,30,29,28,27,26,25};
-    int strip3[] = {38,39,40,41,42,43,44,45,46,47,48,49,50};
-    int strip4[] = {63,62,61,60,59,58,57,56,55,54,53,52,51};
-    int strip5[] = {64,65,66,67,68,69,70,71,72,73,74,75,76};
-    int strip6[] = {89,88,87,86,85,84,83,82,81,80,79,78,77};
-    ring1(255,208,0);
-    ring2(255,208,0);
+//    //define strips as matrix    
+//    int strip1[] = {12,13,14,15,16,17,18,19,20,21,22,23,24};
+//    int strip2[] = {37,36,35,34,33,32,31,30,29,28,27,26,25};
+//    int strip3[] = {38,39,40,41,42,43,44,45,46,47,48,49,50};
+//    int strip4[] = {63,62,61,60,59,58,57,56,55,54,53,52,51};
+//    int strip5[] = {64,65,66,67,68,69,70,71,72,73,74,75,76};
+//    int strip6[] = {89,88,87,86,85,84,83,82,81,80,79,78,77};
+//    ring1(255,208,0);
+//    ring2(255,208,0);
     //Waterfall down
-    for(int j =0; j < 10; j++){
-      
-      for(int i =0; i <= 14; i++){
-         strip.setPixelColor(strip1[i], strip.Color(255,211,0));
-         strip.setPixelColor(strip2[i], strip.Color(255,211,0));
-         strip.setPixelColor(strip3[i], strip.Color(255,211,0));
-         strip.setPixelColor(strip4[i], strip.Color(255,211,0));
-         strip.setPixelColor(strip5[i], strip.Color(255,211,0));
-         strip.setPixelColor(strip6[i], strip.Color(255,211,0));
-         strip.show();
-         delay(60);
-         strip.setPixelColor(strip1[i-2], strip.Color(0,0,0));
-         strip.setPixelColor(strip2[i-2], strip.Color(0,0,0));
-         strip.setPixelColor(strip3[i-2], strip.Color(0,0,0));
-         strip.setPixelColor(strip4[i-2], strip.Color(0,0,0));
-         strip.setPixelColor(strip5[i-2], strip.Color(0,0,0));
-         strip.setPixelColor(strip6[i-2], strip.Color(0,0,0));
-         strip.show();
-         delay(4);
-      }
-    }
+//    for(int j =0; j < 10; j++){
+//      
+//      for(int i =0; i <= 14; i++){
+//         strip.setPixelColor(strip1[i], strip.Color(255,211,0));
+//         strip.setPixelColor(strip2[i], strip.Color(255,211,0));
+//         strip.setPixelColor(strip3[i], strip.Color(255,211,0));
+//         strip.setPixelColor(strip4[i], strip.Color(255,211,0));
+//         strip.setPixelColor(strip5[i], strip.Color(255,211,0));
+//         strip.setPixelColor(strip6[i], strip.Color(255,211,0));
+//         strip.show();
+//         delay(60);
+//         strip.setPixelColor(strip1[i-2], strip.Color(0,0,0));
+//         strip.setPixelColor(strip2[i-2], strip.Color(0,0,0));
+//         strip.setPixelColor(strip3[i-2], strip.Color(0,0,0));
+//         strip.setPixelColor(strip4[i-2], strip.Color(0,0,0));
+//         strip.setPixelColor(strip5[i-2], strip.Color(0,0,0));
+//         strip.setPixelColor(strip6[i-2], strip.Color(0,0,0));
+//         strip.show();
+//         delay(4);
+//      }
+//    };
     reset();
 }
 
